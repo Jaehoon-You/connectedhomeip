@@ -7,8 +7,8 @@ import androidx.lifecycle.viewModelScope
 import com.matter.virtual.device.app.core.common.successOr
 import com.matter.virtual.device.app.core.domain.usecase.matter.IsFabricRemovedUseCase
 import com.matter.virtual.device.app.core.domain.usecase.matter.StartMatterAppServiceUseCase
-import com.matter.virtual.device.app.core.domain.usecase.matter.cluster.GetOnOffFlowUseCase
-import com.matter.virtual.device.app.core.domain.usecase.matter.cluster.SetOnOffUseCase
+import com.matter.virtual.device.app.core.domain.usecase.matter.cluster.onoff.GetOnOffFlowUseCase
+import com.matter.virtual.device.app.core.domain.usecase.matter.cluster.onoff.SetOnOffUseCase
 import com.matter.virtual.device.app.core.ui.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject

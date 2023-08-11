@@ -1,4 +1,4 @@
-package com.matter.virtual.device.app.core.domain.usecase.matter.cluster
+package com.matter.virtual.device.app.core.domain.usecase.matter.cluster.onoff
 
 import com.matter.virtual.device.app.core.data.repository.cluster.OnOffManagerRepository
 import javax.inject.Inject

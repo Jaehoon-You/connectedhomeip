@@ -15,16 +15,16 @@ import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.matter.virtual.device.app.core.common.DeepLink
+import com.matter.virtual.device.app.core.common.Device
 import com.matter.virtual.device.app.core.common.MatterSettings
 import com.matter.virtual.device.app.core.ui.SharedViewModel
 import com.matter.virtual.device.app.feature.main.databinding.FragmentMainBinding
-import com.matter.virtual.device.app.feature.main.model.Menu
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.math.abs
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import timber.log.Timber
+import kotlin.math.abs
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
@@ -95,15 +95,15 @@ class MainFragment : Fragment() {
           )
         }
         MainUiState.Start -> {
-          val itemList = arrayListOf(Menu.ON_OFF_SWITCH)
+          val itemList = arrayListOf(Device.OnOffSwitch, Device.DoorLock)
 
           val menuAdapter =
             MenuAdapter(
                 object : MenuAdapter.ItemHandler {
-                  override fun onClick(item: Menu) {
+                  override fun onClick(item: Device) {
                     viewModel.consumeUiState()
 
-                    val matterSettings = MatterSettings(device = item.device)
+                    val matterSettings = MatterSettings(device = item)
                     val jsonSettings = Json.encodeToString(matterSettings)
                     try {
                       findNavController()

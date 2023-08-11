@@ -6,33 +6,43 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 sealed class Device(
-  val title: String,
-  @StringRes val deviceNameResId: Int,
-  @DrawableRes val deviceIconResId: Int,
-  val deviceTypeId: Long,
-  val discriminator: Int
+    val title: String,
+    @StringRes val deviceNameResId: Int,
+    @DrawableRes val deviceIconResId: Int,
+    val deviceTypeId: Long,
+    val discriminator: Int
 ) {
-  @Serializable
-  object OnOffSwitch :
-    Device(
-      "onoffswitch",
-      R.string.matter_on_off_switch,
-      R.drawable.round_toggle_on_24,
-      0x0103,
-      3841
-    )
+    @Serializable
+    object OnOffSwitch :
+        Device(
+            "onoffswitch",
+            R.string.matter_on_off_switch,
+            R.drawable.round_toggle_on_24,
+            0x0103,
+            3841 // F01
+        )
 
-  @Serializable
-  object Unknown :
-    Device("unknown", R.string.matter_device, R.drawable.round_device_unknown_24, 65535, 3840)
+    @Serializable
+    object DoorLock :
+        Device(
+            "doorlock",
+            R.string.matter_door_lock,
+            R.drawable.round_lock_open_24,
+            0x000A,
+            2560 // A00
+        )
 
-  companion object {
-    fun map(title: String): Device {
-      return Device::class
-        .sealedSubclasses
-        .firstOrNull { it.objectInstance?.title == title }
-        ?.objectInstance
-        ?: Unknown
+    @Serializable
+    object Unknown :
+        Device("unknown", R.string.matter_device, R.drawable.round_device_unknown_24, 65535, 3840)
+
+    companion object {
+        fun map(title: String): Device {
+            return Device::class
+                .sealedSubclasses
+                .firstOrNull { it.objectInstance?.title == title }
+                ?.objectInstance
+                ?: Unknown
+        }
     }
-  }
 }

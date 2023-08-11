@@ -28,10 +28,14 @@ shared_library("jni") {
     "java/AppImpl.h",
     "java/ClusterChangeAttribute.cpp",
     "java/DeviceApp-JNI.cpp",
+    "java/DoorLockManager.cpp",
+    "java/DoorLockManager.h",
     "java/JNIDACProvider.cpp",
     "java/JNIDACProvider.h",
     "java/OnOffManager.cpp",
     "java/OnOffManager.h",
+    "java/PowerSourceManager.cpp",
+    "java/PowerSourceManager.h",
   ]
 
   deps = [
@@ -69,7 +73,9 @@ android_library("java") {
     "java/src/com/matter/virtual/device/app/DeviceApp.java",
     "java/src/com/matter/virtual/device/app/DeviceAppCallback.java",
     "java/src/com/matter/virtual/device/app/DeviceEventType.java",
+    "java/src/com/matter/virtual/device/app/DoorLockManager.java",
     "java/src/com/matter/virtual/device/app/OnOffManager.java",
+    "java/src/com/matter/virtual/device/app/PowerSourceManager.java",
   ]
 
   javac_flags = [ "-Xlint:deprecation" ]
