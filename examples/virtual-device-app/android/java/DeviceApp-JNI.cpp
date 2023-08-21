@@ -19,6 +19,8 @@
 #include "DeviceApp-JNI.h"
 #include "AppImpl.h"
 #include "JNIDACProvider.h"
+
+#include "ColorControlManager.h"
 #include "DoorLockManager.h"
 #include "OnOffManager.h"
 #include "PowerSourceManager.h"
@@ -157,6 +159,15 @@ JNI_METHOD(jboolean, setOnOff)(JNIEnv *, jobject, jint endpoint, jboolean value)
 {
     return DeviceLayer::SystemLayer().ScheduleLambda([endpoint, value] { OnOffManager::SetOnOff(endpoint, value); }) ==
         CHIP_NO_ERROR;
+}
+
+/*
+ * Color Control Manager
+ */
+JNI_METHOD(void, setColorControlManager)(JNIEnv *, jobject, jint endpoint, jobject manager)
+{
+    ColorControlManager::NewManager(endpoint, manager);
+
 }
 
 /*

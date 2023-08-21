@@ -38,4 +38,10 @@ public interface DoorLockManager {
     void initAttributeValue();
 
     void handleLockStateChanged(int value);
+
+    void handleLockCredential(int index, String pin);
+
+    String readLockCredential(int index);
+
+    boolean isIndexFree(int index);
 }

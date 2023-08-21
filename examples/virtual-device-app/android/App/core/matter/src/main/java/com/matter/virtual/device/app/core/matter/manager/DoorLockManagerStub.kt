@@ -38,6 +38,23 @@ class DoorLockManagerStub @Inject constructor(private val deviceApp: DeviceApp) 
         _lockState.value = value.asBooleanLockState()
     }
 
+    override fun handleLockCredential(index: Int, pin: String?) {
+        Timber.d("Hit")
+        //deviceApp.setLockPin(index, pin!!)
+    }
+
+    override fun readLockCredential(index: Int): String {
+        Timber.e("Hit")
+        //return deviceApp.getLockPin(index)
+        return "1234"
+    }
+
+    override fun isIndexFree(index: Int): Boolean {
+        //val pin = deviceApp.getLockPin(index)
+        //return pin == "" || pin.isEmpty() || pin == "null"
+        return true
+    }
+
     fun setLockState(value: Boolean) {
         Timber.d("setLockState():$value")
         deviceApp.setLockState(MatterConstants.DEFAULT_ENDPOINT, value.asLockState())
